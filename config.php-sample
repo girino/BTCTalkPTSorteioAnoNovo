@@ -1,0 +1,15 @@
+<?php
+	$rpc = array(
+		'login' => 'RPC_USER',
+		'password' => 'RPC_PASS',
+		'ip' => '127.0.0.1',
+		'port' => '21057'
+	);
+
+	$config = array(
+		'min' => 1.0,
+		'address' => 'MY_ADDR',
+		'endblock' => 1273002,
+		'beginblock' => 1272920,
+	);
+?>
