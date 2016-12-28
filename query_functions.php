@@ -43,6 +43,16 @@ function blockchain_info_query($method, $param) {
 	return api_query($url, array());
 }
 
+function blocktrail_query($method, $param, $key) {
+	$url = "https://api.blocktrail.com/v1/btc/$method/$param?api_key=$key";
+	return api_query($url, array());
+}
+
+function blocktrail_transactions($addr, $key) {
+	$url = "https://api.blocktrail.com/v1/btc/address/$addr/transactions?api_key=$key&limit=200";
+	return api_query($url, array());
+}
+
 //$tmp = blockhain_info_query('address', '1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F');
 //print_r($tmp)
 

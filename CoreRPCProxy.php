@@ -75,4 +75,8 @@ class CoreRPCProxy implements iRPCProxy {
 	function getblockhash($height) {
 		return $this->client->getblockhash($height);
 	}
+
+	function getName() {
+		return "Core";
+	}
 }

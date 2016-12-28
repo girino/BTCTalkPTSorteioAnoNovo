@@ -4,10 +4,10 @@
 	require_once 'iRPCProxy.php';
 	require_once 'CoreRPCProxy.php';
 	require_once 'BlockChainInfoRPCProxy.php';
-	
-	//$proxy = new CoreRPCProxy($rpc['login'], $rpc['password'], $rpc['ip'], $rpc['port']);
-	$proxy = new BlockChainInfoRPCProxy();
-	
+	require_once 'BlocktrailRPCProxy.php';
+
+	$proxy = null;	
+
 	function calculateTickets($origin) {
 		global $config;
 		$txsret = array();
@@ -74,7 +74,7 @@
 
 	// update config parameters from command line
 	$shortopts  = "a::b::e::m::";
-	$longopts  = array();
+	$longopts  = array("core", "btrail", "bcinfo");
 	$cmdopt = getopt($shortopts, $longopts);
 	if (array_key_exists('a', $cmdopt)) {
 		$config['address'] = $cmdopt['a'];
@@ -88,6 +88,17 @@
 	if (array_key_exists('m', $cmdopt)) {
 		$config['min'] = floatval($cmdopt['m']);
 	}
+	if (array_key_exists('core', $cmdopt)) {
+		$proxy = new CoreRPCProxy($rpc['login'], $rpc['password'], $rpc['ip'], $rpc['port']);
+	} else if (array_key_exists('bcinfo', $cmdopt)) {
+		$proxy = new BlockChainInfoRPCProxy();
+	} else if (array_key_exists('btrail', $cmdopt)) {
+		$proxy = new BlocktrailRPCProxy($config['blocktrailkey']);
+	} else {
+		//defaults to bchain.info
+		$proxy = new BlockChainInfoRPCProxy();
+	}
+	
 	
 	// Parsing and adding new transactions to database
 	print("Selecting the lottery winner for the following parameters:\n");
@@ -95,6 +106,7 @@
 	print("  Final Block:   " . $config['endblock'] . "\n");
 	print("  Loterry Addr:  " . $config['address'] . "\n");
 	print("  Ticket Price:  " . $config['min'] . "\n");
+	print("  BackEnd used:  " . $proxy->getName() . "\n");
 	print("\n");
 	print("For more information on how the winner is selected,\n");
 	print("see the docs at https://github.com/girino/BTCTalkPTSorteioAnoNovo \n");
