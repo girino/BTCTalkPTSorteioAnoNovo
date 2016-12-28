@@ -7,34 +7,49 @@ forum.
 ## Instalation instructions
 
 1. Download from github:
-...``git clone https://github.com/girino/BTCTalkPTSorteioAnoNovo``
+
+   ``git clone https://github.com/girino/BTCTalkPTSorteioAnoNovo``
 1. Enter the folder:
-...``cd BTCTalkPTSorteioAnoNovo``
+
+   ``cd BTCTalkPTSorteioAnoNovo``
 1. copy ``config.php-sample`` to ``config.ph``
 1. Edit the new file (follow the comments).
 1. Run it:
-...``php script.php``
+
+   ``php script.php``
 
 ## optional command lines
 
 Command line options override defaults defined in config.php
 
 **_-a_**
-...Change default loterry address.
+
+   Change default loterry address.
+
 **_-b_**
-...Set initial block (only transactions after this block (inclusive) will participate in the lottery). 
-...This block will also be used as basis for the pseudorandom number.
+
+   Set initial block (only transactions after this block (inclusive) will participate in the lottery). 
+   This block will also be used as basis for the pseudorandom number.
+   
 **_-e_**
-...Set final block (only transactions before this block (inclusive) will participate in the lottery).
-...This block will also be used as basis for the pseudorandom number.
+
+   Set final block (only transactions before this block (inclusive) will participate in the lottery).
+   This block will also be used as basis for the pseudorandom number.
+   
 **_-m_**
-...Change the loterry ticket value (min bet, or "min" in the config file).
+
+   Change the loterry ticket value (min bet, or "min" in the config file).
+   
 **_--core_**
-...Use bitcoin core engine (needs to set up the "$rpc" section in the config.php file).
+
+   Use bitcoin core engine (needs to set up the "$rpc" section in the config.php file).
+   
 **_--btrail_**
-...Use BlockTrail.com API (needs to add the API key set in the "$apikeys" section in the config.php file).
+
+   Use BlockTrail.com API (needs to add the API key set in the "$apikeys" section in the config.php file).
+   
 **_--bcinfo_** (_default_)
-...Use Blockchain.info API. This is slower than blocktrail, and unstable (sometimes breaks because of high load).
+   Use Blockchain.info API. This is slower than blocktrail, and unstable (sometimes breaks because of high load).
 
 ## How it works internally?
 
