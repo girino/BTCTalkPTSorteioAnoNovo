@@ -93,7 +93,7 @@
 	} else if (array_key_exists('bcinfo', $cmdopt)) {
 		$proxy = new BlockChainInfoRPCProxy();
 	} else if (array_key_exists('btrail', $cmdopt)) {
-		$proxy = new BlocktrailRPCProxy($config['blocktrailkey']);
+		$proxy = new BlocktrailRPCProxy($apikeys['blocktrailkey']);
 	} else {
 		//defaults to bchain.info
 		$proxy = new BlockChainInfoRPCProxy();
