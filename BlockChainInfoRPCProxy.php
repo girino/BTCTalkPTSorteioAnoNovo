@@ -20,7 +20,7 @@ class BlockChainInfoRPCProxy implements iRPCProxy {
 							'txid' => $tx['hash'],
 							'value' => $vout['value'] * 0.00000001,
 							'blockhash' => $this->getblockhash($tx['block_height']),
-							'origin' => $this->getAddress($tx['hash']),
+							'origin' => $tx['inputs'][0]['prev_out']['addr'],
 						);
 						array_push($ret, $tmp);
 					}
