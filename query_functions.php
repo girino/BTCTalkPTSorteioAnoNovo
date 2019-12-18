@@ -43,6 +43,15 @@ function blockchain_info_query($method, $param) {
 	return api_query($url, array());
 }
 
+function blockchair_query($domain, $method, $param, $extra = FALSE) {
+	$url = "https://api.blockchair.com/bitcoin/$domain/$method/$param";
+	if ($extra) {
+		$url .= $extra;
+	}
+	// print ("querying URL: " . $url . "\n");
+	return api_query($url, array());
+}
+
 function blocktrail_query($method, $param, $key) {
 	$url = "https://api.blocktrail.com/v1/btc/$method/$param?api_key=$key";
 	return api_query($url, array());

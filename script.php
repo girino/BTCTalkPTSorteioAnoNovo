@@ -5,6 +5,7 @@
 	require_once 'CoreRPCProxy.php';
 	require_once 'BlockChainInfoRPCProxy.php';
 	require_once 'BlocktrailRPCProxy.php';
+	require_once 'BlockChairRPCProxy.php';
 
 	$proxy = null;	
 
@@ -74,7 +75,7 @@
 
 	// update config parameters from command line
 	$shortopts  = "a::b::e::m::";
-	$longopts  = array("core", "btrail", "bcinfo");
+	$longopts  = array("core", "btrail", "bcinfo", "bchair");
 	$cmdopt = getopt($shortopts, $longopts);
 	if (array_key_exists('a', $cmdopt)) {
 		$config['address'] = $cmdopt['a'];
@@ -96,7 +97,7 @@
 		$proxy = new BlocktrailRPCProxy($apikeys['blocktrailkey']);
 	} else {
 		//defaults to bchain.info
-		$proxy = new BlockChainInfoRPCProxy();
+		$proxy = new BlockChairRPCProxy();
 	}
 	
 	
