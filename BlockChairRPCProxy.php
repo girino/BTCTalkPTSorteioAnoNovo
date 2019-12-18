@@ -11,10 +11,10 @@ class BlockChairRPCProxy implements iRPCProxy {
 		$addrinfo = blockchair_query('dashboards', 'address', $address);
 		$transactions = $addrinfo['data'][$address]['transactions'];
 		foreach ($transactions as $txh) {
-			print("Getting tx: " . $txh . "\n");
+			// print("Getting tx: " . $txh . "\n");
 			$tx = blockchair_query('dashboards', 'transaction', $txh)['data'][$txh];
 			if ($tx['transaction']['block_id'] >= $beginblock && $tx['transaction']['block_id'] <= $endblock) {
-				print("Tx " . $tx['transaction']['hash'] . " is in range...\n");
+				// print("Tx " . $tx['transaction']['hash'] . " is in range...\n");
 				foreach($tx['outputs'] as $vout) {
 					if (array_key_exists('recipient', $vout) && $vout['recipient'] == $address) {
 						//print("Tx " . $tx['hash'] . " is valid...\n");
